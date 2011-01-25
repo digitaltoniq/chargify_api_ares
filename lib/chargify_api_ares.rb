@@ -110,7 +110,7 @@ module Chargify
     def self.hosted_page_url(page_name, subscription_id)
       message = "#{page_name}--#{subscription_id}--#{Chargify.hosted_page_shared_key}"
       token = Digest::SHA1.hexdigest(message)[0..9]
-      "#{site}/#{page_name}/#{subscription_id}/#{token}"
+      "#{site}#{page_name}/#{subscription_id}/#{token}"
     end
     
     def update_payment_page_url

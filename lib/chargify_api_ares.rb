@@ -137,6 +137,10 @@ module Chargify
       post :charges, :charge => attrs
     end
     
+    def adjustment(attrs = {})
+      post :adjustments, :adjustment => attrs
+    end
+    
     def credit(attrs = {})
       post :credits, :credit => attrs
     end

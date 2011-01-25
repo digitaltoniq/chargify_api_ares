@@ -110,7 +110,8 @@ module Chargify
     def self.hosted_page_url(page_name, subscription_id)
       message = "#{page_name}--#{subscription_id}--#{Chargify.hosted_page_shared_key}"
       token = Digest::SHA1.hexdigest(message)[0..9]
-      "#{site}#{page_name}/#{subscription_id}/#{token}"
+      site_host = site.to_s.ends_with?('/') ? site.to_s : "#{site.to_s}/" # Not sure why trailing slash isn't consistent?
+      "#{site_host}#{page_name}/#{subscription_id}/#{token}"
     end
     
     def update_payment_page_url
